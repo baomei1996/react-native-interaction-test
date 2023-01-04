@@ -5547,6 +5547,11 @@ react-native-svg@^13.6.0:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
+react-native-waveview@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-waveview/-/react-native-waveview-1.1.0.tgz#7a791545d08bd0baadd66f8d8c7d3b55dcc572fe"
+  integrity sha512-TkYkWlfjutYfsLSIbeRtJbLVAHMpkkvhIfyWF3K7O1jocoBa94qXSdcv1bb0owWvBtUyEE9ODaVBnX5CJZezdQ==
+
 react-native@0.70.6:
   version "0.70.6"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.70.6.tgz#d692f8b51baffc28e1a8bc5190cdb779de937aa8"

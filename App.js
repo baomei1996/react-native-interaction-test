@@ -10,6 +10,7 @@ import React from 'react';
 import type {Node} from 'react';
 
 import ProgressTest from './src/screens/ProgressTest';
+import LongPressButtonTest from './src/screens/LongPressButtonTest';
 
 import {StyleSheet, View} from 'react-native';
 
@@ -17,6 +18,7 @@ const App: () => Node = () => {
   return (
     <View style={styles.container}>
       <ProgressTest progress={100} />
+      <LongPressButtonTest />
     </View>
   );
 };
