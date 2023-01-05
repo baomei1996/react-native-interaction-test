@@ -17,7 +17,7 @@ import {StyleSheet, View} from 'react-native';
 const App: () => Node = () => {
   return (
     <View style={styles.container}>
-      <ProgressTest progress={100} />
+      <ProgressTest progress={60} />
       <LongPressButtonTest />
     </View>
   );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000',
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
