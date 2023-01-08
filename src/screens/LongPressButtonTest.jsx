@@ -7,7 +7,7 @@ function WaveView({h}) {
   const waveRef = useRef(null);
 
   useEffect(() => {
-    console.log(h);
+    waveRef.current.setWaterHeight(h);
   }, [h]);
 
   return (
@@ -15,8 +15,9 @@ function WaveView({h}) {
       ref={ref => (waveRef.current = ref)}
       style={styles.waveBall}
       H={-15}
+      easing="ease-in-out"
       waveParams={[
-        {A: 10, T: 180, fill: 'rgb(237, 33, 81)'},
+        {A: 10, T: 200, fill: 'rgb(237, 33, 81)'},
         {A: 15, T: 140, fill: 'rgba(237, 33, 81, 0.75)'},
       ]}
       animated={true}
@@ -25,26 +26,56 @@ function WaveView({h}) {
 }
 
 function LongPressButtonTest() {
-  const [h, setH] = useState(-15);
-
-  const max_guage = 189 - 10;
+  const [waveHeight, setWaveHeight] = useState(-10);
+  const [onPress, setOnPress] = useState(false);
+  const max_guage = 179;
   const min_guage = -10;
 
-  const onPressIn = () => {
-    const boostGuage = setInterval(() => {
-      setH(h + 1);
+  useEffect(() => {
+    if (!onPress) {
+      return;
+    }
+    const raiseGuage = setInterval(() => {
+      setWaveHeight(waveHeight + 10);
 
-      if (h === max_guage) {
-        clearInterval(boostGuage);
+      if (waveHeight > max_guage) {
+        setWaveHeight(max_guage);
+        clearInterval(raiseGuage);
       }
-    }, 500);
+    }, 200);
+    return () => clearInterval(raiseGuage);
+  }, [waveHeight, onPress]);
+
+  useEffect(() => {
+    if (onPress) {
+      return;
+    }
+
+    const lowerGuage = setInterval(() => {
+      setWaveHeight(waveHeight - 10);
+
+      if (waveHeight < min_guage) {
+        setWaveHeight(min_guage);
+        clearInterval(lowerGuage);
+      }
+    }, 200);
+    return () => clearInterval(lowerGuage);
+  }, [waveHeight, onPress]);
+
+  const onPressIn = () => {
+    setOnPress(true);
   };
 
-  const onPressOut = () => {};
+  const onPressOut = () => {
+    setOnPress(false);
+  };
 
   return (
-    <Pressable style={[styles.button]} onPressIn={onPressIn}>
-      <WaveView h={h} />
+    <Pressable
+      style={[styles.button]}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}>
+      <WaveView h={waveHeight} />
       <Text style={styles.text}>STOP</Text>
     </Pressable>
   );
