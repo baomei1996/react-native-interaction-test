@@ -11,6 +11,7 @@ import type {Node} from 'react';
 
 import ProgressTest from './src/screens/ProgressTest';
 import LongPressButtonTest from './src/screens/LongPressButtonTest';
+import RotateBoxTest from './src/screens/RotateBoxTest';
 
 import {StyleSheet, View} from 'react-native';
 import WalkingProgressTest from './src/screens/WalkingProgressTest';
@@ -18,7 +19,7 @@ import WalkingProgressTest from './src/screens/WalkingProgressTest';
 const App: () => Node = () => {
   return (
     <View style={styles.container}>
-      <WalkingProgressTest progress={80} />
+      <RotateBoxTest />
     </View>
   );
 };
