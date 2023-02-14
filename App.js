@@ -12,21 +12,19 @@ import type {Node} from 'react';
 import ProgressTest from './src/screens/ProgressTest';
 import LongPressButtonTest from './src/screens/LongPressButtonTest';
 import RotateBoxTest from './src/screens/RotateBoxTest';
+import BlurBox from './src/screens/BlurBox';
 
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import WalkingProgressTest from './src/screens/WalkingProgressTest';
+import ImageSrc from './src/screens/test.png';
 
 const App: () => Node = () => {
-  return (
-    <View style={styles.container}>
-      <RotateBoxTest />
-    </View>
-  );
+  return <BlurBox />;
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000',
+    backgroundColor: '#000000',
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
