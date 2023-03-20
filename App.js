@@ -7,7 +7,9 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+import HomeScreen from './src/screens/HomeScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import MyTabBar from './src/navigations/MyTabBar';
 
 import ProgressTest from './src/screens/ProgressTest';
 import LongPressButtonTest from './src/screens/LongPressButtonTest';
@@ -15,12 +17,24 @@ import RotateBoxTest from './src/screens/RotateBoxTest';
 import BlurBox from './src/screens/BlurBox';
 
 import {StyleSheet, View, Image} from 'react-native';
-import WalkingProgressTest from './src/screens/WalkingProgressTest';
-import ImageSrc from './src/screens/test.png';
+import {NavigationContainer} from '@react-navigation/native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
-const App: () => Node = () => {
-  return <BlurBox />;
-};
+const Tab = createMaterialTopTabNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        tabBar={props => <MyTabBar {...props} />}
+        tabBarPosition="bottom"
+        swipeEnabled={false}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
