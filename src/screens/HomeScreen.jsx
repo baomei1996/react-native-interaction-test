@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import MapPolyline from './components/MapPolyline';
 
 function HomeScreen() {
   return (
     <View style={styles.rootContainer}>
-      <Text>HomeScreen</Text>
+      <MapPolyline />
     </View>
   );
 }
@@ -17,6 +18,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'orange',
   },
 });
